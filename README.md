@@ -35,8 +35,8 @@ Um sistema de **"Semáforo de Lotação"**:
 ### Passo a passo
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/SEU_USUARIO/filazero-plus.git](https://github.com/SEU_USUARIO/filazero-plus.git)
-    cd filazero-plus
+    git clone [https://github.com/tiaguinnnn/FilaZeroMais.git)
+    cd FilaZeroMais
     ```
 
 2.  **Crie o ambiente virtual e instale dependências:**
