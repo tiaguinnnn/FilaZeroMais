@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #f5f7fa;
+    background-color: #e6f2f0; /* fundo suave saúde */
     color: #333;
     line-height: 1.6;
 }
@@ -21,7 +21,7 @@ body {
 
 /* Header */
 header {
-    background-color: #0d6efd;
+    background-color: #2b8a3e; /* verde corporativo */
     color: white;
     padding: 15px 0;
     position: fixed;
@@ -59,7 +59,7 @@ header {
 }
 
 .nav-menu li a:hover {
-    color: #ffc107;
+    color: #a8e6cf; /* verde claro */
 }
 
 /* Menu Mobile */
@@ -79,7 +79,7 @@ header {
 
 /* Hero */
 .hero {
-    background: linear-gradient(135deg, #0d6efd, #6610f2);
+    background: linear-gradient(135deg, #2b8a3e, #66cdaa); /* verde corporativo e verde claro */
     color: white;
     text-align: center;
     padding: 160px 0 100px;
@@ -100,8 +100,8 @@ header {
 }
 
 .btn-primary {
-    background-color: #ffc107;
-    color: #333;
+    background-color: #66cdaa; /* verde claro */
+    color: white;
     padding: 15px 30px;
     text-decoration: none;
     font-weight: bold;
@@ -110,7 +110,7 @@ header {
 }
 
 .btn-primary:hover {
-    background-color: #ffca2c;
+    background-color: #4da88e; /* verde escuro hover */
     transform: translateY(-5px);
 }
 
@@ -151,7 +151,7 @@ header {
 }
 
 .feature h3 {
-    color: #0d6efd;
+    color: #2b8a3e;
     margin-bottom: 15px;
 }
 
@@ -162,7 +162,7 @@ header {
 
 /* Footer */
 footer {
-    background-color: #212529;
+    background-color: #14532d; /* verde escuro */
     color: white;
     text-align: center;
     padding: 40px 0;
@@ -171,13 +171,13 @@ footer {
 
 footer .socials a {
     margin: 0 10px;
-    color: #ffc107;
+    color: #a8e6cf; /* verde claro */
     text-decoration: none;
     transition: color 0.3s;
 }
 
 footer .socials a:hover {
-    color: #fff;
+    color: white;
 }
 
 /* Responsividade */
@@ -185,7 +185,7 @@ footer .socials a:hover {
     .nav-menu {
         display: none;
         flex-direction: column;
-        background-color: #0d6efd;
+        background-color: #2b8a3e;
         position: absolute;
         top: 60px;
         right: 0;
@@ -203,6 +203,7 @@ footer .socials a:hover {
     }
 }
 
+/* Mensagens */
 .messages p {
     padding: 10px;
     margin: 10px 0;
@@ -218,51 +219,65 @@ footer .socials a:hover {
     background-color: #f8d7da;
     color: #721c24;
 }
+
+/* Formulário */
 .form-container {
-    max-width: 400px;
-    margin: 50px auto;
+    max-width: 450px;
+    margin: 80px auto;
     padding: 30px;
-    background-color: #f7f7f7;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.1);
+    border-top: 5px solid #2b8a3e; /* barra verde para destaque */
 }
 
 .form-container h2 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    color: #2b8a3e;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .form-group label {
     margin-bottom: 5px;
     font-weight: bold;
+    color: #14532d;
 }
 
-.form-group input {
-    padding: 10px;
+.form-group input,
+.form-group textarea {
+    padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 16px;
+    transition: border 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #2b8a3e;
+    outline: none;
 }
 
 .btn-primary {
     width: 100%;
-    padding: 12px;
-    background-color: #4CAF50;
+    padding: 14px;
+    background-color: #2b8a3e;
     color: white;
     border: none;
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    transition: background 0.3s;
 }
 
 .btn-primary:hover {
-    background-color: #45a049;
+    background-color: #14532d;
 }
 
 .small-text {
@@ -271,6 +286,6 @@ footer .socials a:hover {
 }
 
 .small-text a {
-    color: #4CAF50;
+    color: #2b8a3e;
     text-decoration: none;
 }
