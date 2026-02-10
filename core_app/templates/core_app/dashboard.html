@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - FilaZero+{% endblock %}
+
+{% block content %}
+<h1>Painel da Unidade</h1>
+<div class="dashboard">
+    <div id="status" class="status verde">🟢 Livre</div>
+
+    <h2>Pacientes na unidade:</h2>
+    <h1 id="contador">10</h1>
+
+    <div class="buttons">
+        <button onclick="entrada()">➕ Entrada</button>
+        <button onclick="saida()">➖ Saída</button>
+    </div>
+</div>
+{% endblock %}

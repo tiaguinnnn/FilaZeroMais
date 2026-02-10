@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}FilaZero+{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% if messages %}
+<div class="messages">
+    {% for message in messages %}
+        <p class="{{ message.tags }}">{{ message }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="container header-container">
+            <h1 class="logo">FilaZero+</h1>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="{% url 'home' %}">Início</a></li>
+                    <li><a href="{% url 'sobre' %}">Sobre</a></li>
+                    <li><a href="{% url 'servicos' %}">Serviços</a></li>
+                    <li><a href="{% url 'contato' %}">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    {% block hero %}
+    <section class="hero">
+        <div class="container hero-container">
+            <h2>Organize suas filas de forma inteligente</h2>
+            <p>Reduza o tempo de espera e aumente a eficiência do seu negócio.</p>
+            <a href="#" class="btn-primary">Comece Agora</a>
+        </div>
+    </section>
+    {% endblock %}
+
+    <!-- Features Section -->
+    {% comment %} {% block features %}
+    <section class="features">
+        <div class="container features-container">
+            <div class="feature">
+                <h3>Rápido</h3>
+                <p>Interface simples e ágil para todos os usuários.</p>
+            </div>
+            <div class="feature">
+                <h3>Seguro</h3>
+                <p>Dados protegidos com segurança de nível empresarial.</p>
+            </div>
+            <div class="feature">
+                <h3>Inteligente</h3>
+                <p>Sistema de filas automatizado e eficiente.</p>
+            </div>
+        </div>
+    </section>
+    {% endblock %} {% endcomment %}
+
+    <!-- Main content -->
+    <main class="container main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <p>© 2026 FilaZero+. Todos os direitos reservados.</p>
+            <div class="socials">
+                <a href="#" target="_blank">Facebook</a>
+                <a href="#" target="_blank">Twitter</a>
+                <a href="#" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
