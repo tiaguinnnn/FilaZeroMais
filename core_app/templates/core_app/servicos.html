@@ -1,6 +1,17 @@
 {% extends 'base.html' %}
-
 {% block content %}
-<h1>Serviços</h1>
-<p>Lista de serviços oferecidos.</p>
+<h1>Unidades de Saúde</h1>
+<p>Confira a lotação em tempo real:</p>
+
+<div class="unidades-container">
+    {% for unidade in unidades %}
+    <div class="card-unidade">
+        <h3>{{ unidade.nome }}</h3>
+        <p><strong>Fila:</strong> {{ unidade.pacientes_em_espera }} pacientes</p>
+        <p><small>Última atualização: {{ unidade.ultima_atualizacao|date:"H:i" }}</small></p>
+    </div>
+    {% empty %}
+    <p>Nenhuma unidade disponível no momento.</p>
+    {% endfor %}
+</div>
 {% endblock %}

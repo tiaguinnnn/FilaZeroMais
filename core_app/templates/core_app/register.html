@@ -1,27 +1,45 @@
 {% extends 'base.html' %}
-
 {% block title %}Cadastro - FilaZero+{% endblock %}
 
 {% block content %}
 <div class="form-container">
     <h2>Cadastro</h2>
+    
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-success{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
     <form method="POST" action="{% url 'register' %}">
         {% csrf_token %}
         <div class="form-group">
             <label for="first_name">Nome:</label>
             <input type="text" name="first_name" id="first_name" placeholder="Digite seu nome" required>
         </div>
+        
+        <div class="form-group">
+            <label for="cpf">CPF:</label>
+            <input type="text" name="cpf" id="cpf" placeholder="000.000.000-00" required>
+        </div>
+        <div class="form-group">
+            <label for="telefone">Telefone:</label>
+            <input type="text" name="telefone" id="telefone" placeholder="(00) 00000-0000" required>
+        </div>
+
         <div class="form-group">
             <label for="email">Email:</label>
             <input type="email" name="email" id="email" placeholder="Digite seu email" required>
         </div>
         <div class="form-group">
             <label for="password1">Senha:</label>
-            <input type="password" name="password1" id="password1" placeholder="Digite sua senha" required>
+            <input type="password" name="password1" id="password1" placeholder="Digite sua senha" required minlength="6">
         </div>
         <div class="form-group">
             <label for="password2">Confirmar Senha:</label>
-            <input type="password" name="password2" id="password2" placeholder="Confirme sua senha" required>
+            <input type="password" name="password2" id="password2" placeholder="Confirme sua senha" required minlength="6">
         </div>
         <button type="submit" class="btn-primary">Cadastrar</button>
     </form>
