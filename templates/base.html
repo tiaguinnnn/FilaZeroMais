@@ -53,8 +53,11 @@
         {% endfor %}
     </div>
     {% endif %}
-
-    {% block hero %}{% endblock %}
+        {% block hero %}{% endblock %}
+    
+    <main class="container my-5">
+        {% block content %}{% endblock %}
+    </main>
 
 
     <footer class="bg-dark text-white py-5 mt-auto">
