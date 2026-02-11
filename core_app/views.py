@@ -11,15 +11,6 @@ def home(request):
 def servicos(request):
     return render(request, 'core_app/servicos.html')
 
-def contato(request):
-    if request.method == 'POST':
-        nome = request.POST.get('nome')
-        email = request.POST.get('email')
-        mensagem = request.POST.get('mensagem')
-        # Aqui você pode salvar no banco ou enviar email
-        messages.success(request, 'Mensagem enviada com sucesso!')
-        return redirect('contato')
-    return render(request, 'core_app/contato.html')
 
 # Cadastro
 def register_view(request):
@@ -63,8 +54,3 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('home')
-
-# Dashboard (somente usuários logados)
-@login_required(login_url='login')
-def dashboard(request):
-    return render(request, 'core_app/dashboard.html')

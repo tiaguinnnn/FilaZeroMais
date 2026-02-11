@@ -142,7 +142,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "core_app" / "static",  # pasta estática do app
     # BASE_DIR / "static",             # caso tenha pasta global
 ]
-
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 # Inicializa o environ
 env = environ.Env(
     DEBUG=(bool, False)
