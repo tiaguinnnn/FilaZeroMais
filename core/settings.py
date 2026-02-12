@@ -74,13 +74,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
+LOGIN_URL = 'login'
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 # Inicializa o environ
 env = environ.Env(
-    DEBUG=(bool, False)
+    DEBUG=(bool, True)
 )
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -140,25 +141,22 @@ USE_I18N = True
 
 USE_TZ = True
 
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    BASE_DIR / "core_app" / "static",  # pasta estática do app
-    # BASE_DIR / "static",             # caso tenha pasta global
+    BASE_DIR / "core_app" / "static",
 ]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-# Inicializa o environ
+
 env = environ.Env(
-    DEBUG=(bool, False)
+    DEBUG=(bool, True)
 )
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Caminho para o arquivo .env que você criou na raiz
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
-
-SECRET_KEY = env('SECRET_KEY')
-DEBUG = env('DEBUG')

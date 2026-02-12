@@ -12,7 +12,7 @@ from .models import UnidadeSaude  # IMPORTANTE
 def home(request):
     return render(request, 'core_app/home.html')
 
-
+@login_required
 def servicos(request):
     unidades = UnidadeSaude.objects.all()  # Busca todas as unidades cadastradas
     return render(request, 'core_app/servicos.html', {
