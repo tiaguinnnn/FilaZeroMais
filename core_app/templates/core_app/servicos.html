@@ -1,17 +1,101 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Unidades de Saúde</h1>
-<p>Confira a lotação em tempo real:</p>
 
-<div class="unidades-container">
-    {% for unidade in unidades %}
-    <div class="card-unidade">
-        <h3>{{ unidade.nome }}</h3>
-        <p><strong>Fila:</strong> {{ unidade.pacientes_em_espera }} pacientes</p>
-        <p><small>Última atualização: {{ unidade.ultima_atualizacao|date:"H:i" }}</small></p>
+<div class="bg-light min-vh-100 py-5">
+    <div class="container">
+
+        <!-- Título -->
+        <div class="text-center mb-5">
+            <h1 class="fw-bold text-success display-5">
+                <i class="bi bi-hospital me-2"></i>
+                Unidades de Saúde
+            </h1>
+            <p class="text-muted fs-5">
+                Monitoramento da lotação em tempo real.
+            </p>
+        </div>
+
+        <div class="row g-4">
+            {% for unidade in unidades %}
+            <div class="col-md-6 col-lg-4">
+
+                <!-- Card como link (efeito hover natural do bootstrap) -->
+                <div class="card h-100 border-0 shadow rounded-4 bg-white">
+
+                    <div class="card-body p-4">
+
+                        <!-- Nome -->
+                        <h5 class="fw-bold text-dark mb-2">
+                            {{ unidade.nome }}
+                        </h5>
+
+                        <!-- Endereço -->
+                        <p class="text-muted small mb-4">
+                            <i class="bi bi-geo-alt-fill text-success"></i>
+                            {{ unidade.endereco }}
+                        </p>
+
+                        <!-- Número -->
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="text-muted small">Pacientes na fila</span>
+                            <span class="fs-3 fw-bold text-success">
+                                {{ unidade.pacientes_em_espera }}
+                            </span>
+                        </div>
+
+                        <!-- Barra -->
+                        <div class="progress rounded-pill mb-4" style="height: 8px;">
+                            <div class="progress-bar 
+                                {% if unidade.pacientes_em_espera <= 5 %}
+                                    bg-success
+                                {% elif unidade.pacientes_em_espera <= 15 %}
+                                    bg-warning
+                                {% else %}
+                                    bg-danger
+                                {% endif %}
+                            "
+                            style="width: {{ unidade.pacientes_em_espera|add:'0' }}0%;">
+                            </div>
+                        </div>
+
+                        <!-- Status -->
+                        <div class="mb-3">
+                            {% if unidade.pacientes_em_espera <= 5 %}
+                                <span class="badge bg-success-subtle text-success rounded-pill px-3 py-2">
+                                    Baixa lotação
+                                </span>
+                            {% elif unidade.pacientes_em_espera <= 15 %}
+                                <span class="badge bg-warning-subtle text-warning rounded-pill px-3 py-2">
+                                    Lotação moderada
+                                </span>
+                            {% else %}
+                                <span class="badge bg-danger-subtle text-danger rounded-pill px-3 py-2">
+                                    Alta lotação
+                                </span>
+                            {% endif %}
+                        </div>
+
+                        <!-- Atualização -->
+                        <div class="text-muted small border-top pt-3">
+                            <i class="bi bi-clock-history me-1"></i>
+                            Atualizado às {{ unidade.ultima_atualizacao|date:"H:i" }}
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <div class="alert alert-info shadow-sm rounded-4 p-4">
+                    <i class="bi bi-info-circle me-2"></i>
+                    Nenhuma unidade disponível no momento.
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
     </div>
-    {% empty %}
-    <p>Nenhuma unidade disponível no momento.</p>
-    {% endfor %}
 </div>
+
 {% endblock %}
