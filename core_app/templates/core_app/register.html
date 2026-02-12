@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Cadastro - FilaZero+{% endblock %}
+{% load static %} {% block title %}Cadastro - FilaZero+{% endblock %}
 
 {% block content %}
 <div class="form-container">
@@ -22,11 +22,12 @@
         
         <div class="form-group">
             <label for="cpf">CPF:</label>
-            <input type="text" name="cpf" id="cpf" placeholder="000.000.000-00" required>
+            <input type="text" name="cpf" id="cpf" inputmode="numeric" placeholder="000.000.000-00" maxlength="14" required>
         </div>
+
         <div class="form-group">
             <label for="telefone">Telefone:</label>
-            <input type="text" name="telefone" id="telefone" placeholder="(00) 00000-0000" required>
+            <input type="text" name="telefone" id="telefone" placeholder="(00) 00000-0000" maxlength="15" required>
         </div>
 
         <div class="form-group">
@@ -45,4 +46,7 @@
     </form>
     <p class="small-text">Já tem uma conta? <a href="{% url 'login' %}">Faça login</a></p>
 </div>
+
+<script src="{% static 'js/format_cpf.js' %}"></script>
+
 {% endblock %}

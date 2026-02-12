@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     return render(request, 'core_app/home.html')
 
+@login_required
 def servicos(request):
     return render(request, 'core_app/servicos.html')
 
