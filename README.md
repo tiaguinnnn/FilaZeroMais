@@ -62,7 +62,7 @@ Um sistema de **"Semáforo de Lotação"**:
 
 ## 📋 Status do Projeto
 * [x] Definição de Escopo
-* [ ] Backend (Models & Views)
-* [ ] Frontend (Interface do Cidadão)
-* [ ] Integração com Banco de Dados
-* [ ] Testes e Validação
+* [x] Backend (Models & Views)
+* [x] Frontend (Interface do Cidadão)
+* [x] Integração com Banco de Dados
+* [x] Testes e Validação

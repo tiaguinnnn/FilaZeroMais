@@ -23,7 +23,7 @@ class UnidadeSaude(models.Model):
 class Paciente(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     nome = models.CharField(max_length=100)
-    cpf = models.CharField(max_length=11, unique=True)
+    cpf = models.CharField(max_length=14, unique=True)
     telefone = models.CharField(max_length=14)
     email = models.EmailField()
     unidade_favorita = models.CharField(max_length=100, blank=True)

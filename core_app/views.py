@@ -3,26 +3,15 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import UnidadeSaude  # IMPORTANTE
-
-# ==========================
-# Páginas públicas
-# ==========================
+from .models import UnidadeSaude
 
 def home(request):
     return render(request, 'core_app/home.html')
 
 @login_required
 def servicos(request):
-    unidades = UnidadeSaude.objects.all()  # Busca todas as unidades cadastradas
-    return render(request, 'core_app/servicos.html', {
-        'unidades': unidades
-    })
-
-
-# ==========================
-# Cadastro
-# ==========================
+    unidades = UnidadeSaude.objects.all()
+    return render(request, 'core_app/servicos.html', {'unidades': unidades})
 
 def register_view(request):
     if request.method == 'POST':
@@ -44,17 +33,14 @@ def register_view(request):
             password=password1,
             first_name=first_name
         )
-        user.save()
+
+        # login automático
+        login(request, user)
 
         messages.success(request, 'Cadastro realizado com sucesso!')
-        return redirect('login')
+        return redirect('servicos')
 
     return render(request, 'core_app/register.html')
-
-
-# ==========================
-# Login
-# ==========================
 
 def login_view(request):
     if request.method == 'POST':
@@ -65,17 +51,12 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
-            return redirect('home')  # mudei para home (dashboard não existe na sua view)
+            return redirect('home')
         else:
             messages.error(request, 'Usuário ou senha inválidos.')
             return redirect('login')
 
     return render(request, 'core_app/login.html')
-
-
-# ==========================
-# Logout
-# ==========================
 
 def logout_view(request):
     logout(request)
