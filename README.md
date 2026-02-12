@@ -1,68 +1,73 @@
-# 🏥 FilaZero+ (Monitoramento de Lotação Hospitalar)
+🏥 FilaZero+ (Monitoramento de Lotação Hospitalar)
+"Menos filas, mais saúde. Transparência e eficiência para a gestão hospitalar."
 
-> "Menos filas, mais saúde. Decisões informadas antes de sair de casa."
+📌 Sobre o Projeto
+O FilaZero+ é uma plataforma focada em resolver o problema de superlotação em unidades de saúde. Através de um sistema de "Semáforo de Lotação", pacientes podem verificar a ocupação de hospitais e UBSs em tempo real antes de sair de casa, permitindo uma distribuição inteligente da demanda.
 
-## 📌 Sobre o Projeto
-O **FilaZero+** é uma solução web desenvolvida para combater a superlotação em unidades de saúde. O sistema oferece transparência em tempo real para a população, permitindo que pacientes com casos menos urgentes verifiquem a lotação das unidades próximas e escolham onde ser atendidos, equilibrando a demanda da rede pública/privada.
+🛠️ Tecnologias Utilizadas
+Back-end: Python 3.12+ & Django 5.0
 
-### 🎯 A Dor (Problema)
-Pacientes se deslocam para postos de saúde sem saber o tempo de espera real. Isso gera:
-1.  Aglomerações desnecessárias.
-2.  Risco de contágio cruzado em salas de espera lotadas.
-3.  Desgaste das equipes médicas.
+Banco de Dados: MySQL 8.0
 
-### 💡 A Solução
-Um sistema de **"Semáforo de Lotação"**:
-* **Visão do Cidadão:** Acesso web simples (sem login) que mostra as unidades, endereço e um indicador de cor (🟢 Livre, 🟡 Moderado, 🔴 Lotado).
-* **Visão da Unidade:** Painel administrativo minimalista onde a recepção atualiza o fluxo com apenas dois cliques (+ Entrada / - Saída).
+Testes: Pytest & Pytest-Django
 
----
+Infra: Script de Provisionamento Automático (init_db)
 
-## 🚀 Tecnologias Utilizadas
-* **Backend:** Python 3 + Django 5
-* **Banco de Dados:** MySQL
-* **Frontend:** HTML5, CSS3, JavaScript (Fetch API para atualização em tempo real)
-* **Estilização:** Bootstrap / CSS Customizado
+🚀 Guia de Instalação e Execução
+Siga rigorosamente os passos abaixo para preparar o ambiente:
 
----
+1. Clonar e Configurar Ambiente
+Bash
+# Clone o projeto
+git clone https://github.com/tiaguinnnn/FilaZeroMais.git
+cd FilaZeroMais
 
-## 🛠️ Instalação e Execução
+# Crie e ative o ambiente virtual
+python -m venv venv
+venv\Scripts\activate  # Windows
+# source venv/bin/activate # Linux/Mac
 
-### Pré-requisitos
-* Python 3.x
-* MySQL Server rodando
+# INSTALAÇÃO DE DEPENDÊNCIAS (Não pule este passo)
+pip install django mysql-connector-python python-dotenv pytest pytest-django
+2. Configurar Variáveis de Ambiente
+Crie um arquivo .env na raiz do projeto com suas credenciais do MySQL local:
 
-### Passo a passo
-1.  **Clone o repositório:**
-    ```bash
-    git clone [https://github.com/tiaguinnnn/FilaZeroMais.git)
-    cd FilaZeroMais
-    ```
+Snippet de código
+DB_NAME=filazero_db
+DB_USER=root
+DB_PASSWORD=VoucherDev@2024
+DB_HOST=localhost
+3. Provisionamento do Banco de Dados
+Executamos o setup em 3 etapas para garantir que o banco exista e esteja populado:
 
-2.  **Crie o ambiente virtual e instale dependências:**
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # Linux/Mac
-    venv\Scripts\activate     # Windows
-    pip install -r requirements.txt
-    ```
+Bash
+# A) Criação física do banco no MySQL
+python init_db.py
 
-3.  **Configure o Banco de Dados:**
-    * Crie um banco chamado `filazero_db` no seu MySQL.
-    * Ajuste as credenciais no arquivo `settings.py`.
+# B) Aplicação da estrutura das tabelas
+python manage.py makemigrations
+python manage.py migrate
 
-4.  **Rode as migrações e inicie:**
-    ```bash
-    python manage.py makemigrations
-    python manage.py migrate
-    python manage.py runserver
-    ```
+# C) Fomento de dados realistas (UBSs e Hospitais)
+python manage.py seed_db
+4. Rodar o Projeto
+Bash
+python manage.py runserver
+O sistema estará disponível em: http://127.0.0.1:8000
 
----
+🧪 Validação de Qualidade (QA)
+Para rodar os testes automatizados de integridade de dados e segurança:
 
-## 📋 Status do Projeto
-* [x] Definição de Escopo
-* [x] Backend (Models & Views)
-* [x] Frontend (Interface do Cidadão)
-* [x] Integração com Banco de Dados
-* [x] Testes e Validação
+Bash
+pytest -v
+📋 Funcionalidades Principais
+[x] Dashboard de Unidades: Visualização de lotação via cores dinâmicas.
+
+[x] Cadastro de Paciente: Validação robusta de CPF e vínculo com Django User.
+
+[x] Monitoramento em Tempo Real: Contador de pacientes em espera com travas de segurança (MinValueValidator).
+
+[x] Provisionamento DevOps: Script para recriação rápida de ambiente.
+
+🤝 Contribuição
+Desenvolvido por Tiago, Erica e Eric para o Hackathon 2026.
