@@ -3,3 +3,6 @@ Django==5.2.3
 django-environ==0.12.0
 sqlparse==0.5.5
 tzdata==2025.3
+mysql-connector-python
+mysqlclient
+python-dotenv

@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-
+ 
 <div class="bg-light min-vh-100 py-5">
     <div class="container">
-
+ 
         <!-- Título -->
         <div class="text-center mb-5">
             <h1 class="fw-bold text-success display-5">
@@ -14,27 +14,27 @@
                 Monitoramento da lotação em tempo real.
             </p>
         </div>
-
+ 
         <div class="row g-4">
             {% for unidade in unidades %}
             <div class="col-md-6 col-lg-4">
-
+ 
                 <!-- Card como link (efeito hover natural do bootstrap) -->
                 <div class="card h-100 border-0 shadow rounded-4 bg-white">
-
+ 
                     <div class="card-body p-4">
-
+ 
                         <!-- Nome -->
                         <h5 class="fw-bold text-dark mb-2">
                             {{ unidade.nome }}
                         </h5>
-
+ 
                         <!-- Endereço -->
                         <p class="text-muted small mb-4">
                             <i class="bi bi-geo-alt-fill text-success"></i>
                             {{ unidade.endereco }}
                         </p>
-
+ 
                         <!-- Número -->
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <span class="text-muted small">Pacientes na fila</span>
@@ -42,10 +42,10 @@
                                 {{ unidade.pacientes_em_espera }}
                             </span>
                         </div>
-
+ 
                         <!-- Barra -->
                         <div class="progress rounded-pill mb-4" style="height: 8px;">
-                            <div class="progress-bar 
+                            <div class="progress-bar
                                 {% if unidade.pacientes_em_espera <= 5 %}
                                     bg-success
                                 {% elif unidade.pacientes_em_espera <= 15 %}
@@ -57,7 +57,7 @@
                             style="width: {{ unidade.pacientes_em_espera|add:'0' }}0%;">
                             </div>
                         </div>
-
+ 
                         <!-- Status -->
                         <div class="mb-3">
                             {% if unidade.pacientes_em_espera <= 5 %}
@@ -65,25 +65,27 @@
                                     Baixa lotação
                                 </span>
                             {% elif unidade.pacientes_em_espera <= 15 %}
-                                <span class="badge bg-warning-subtle text-warning rounded-pill px-3 py-2">
+                                <span class="badge rounded-pill px-3 py-2"
+                                    style="background-color: #FFF3CD; color: #856404; font-weight: 600;">
                                     Lotação moderada
                                 </span>
+                               
                             {% else %}
                                 <span class="badge bg-danger-subtle text-danger rounded-pill px-3 py-2">
                                     Alta lotação
                                 </span>
                             {% endif %}
                         </div>
-
+ 
                         <!-- Atualização -->
                         <div class="text-muted small border-top pt-3">
                             <i class="bi bi-clock-history me-1"></i>
                             Atualizado às {{ unidade.ultima_atualizacao|date:"H:i" }}
                         </div>
-
+ 
                     </div>
                 </div>
-
+ 
             </div>
             {% empty %}
             <div class="col-12 text-center">
@@ -94,8 +96,9 @@
             </div>
             {% endfor %}
         </div>
-
+ 
     </div>
 </div>
-
+ 
 {% endblock %}
+ 
