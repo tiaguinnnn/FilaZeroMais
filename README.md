@@ -36,14 +36,6 @@ pip install -r requirements.txt
 
 Crie um arquivo `.env` na raiz com:
 
-```ini
-DB_NAME=filazero_db
-DB_USER=root
-DB_PASSWORD=VoucherDev@2024
-DB_HOST=localhost
-DB_PORT=3306
-```
-
 Depois provisione:
 
 ```powershell
